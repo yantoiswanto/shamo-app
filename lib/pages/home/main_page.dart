@@ -118,7 +118,7 @@ class _MainPageState extends State<MainPage> {
           return ChatPage();
           break;
         case 2:
-          return WhistlistPage();
+          return WishlistPage();
           break;
         case 3:
           return ProfilePage();
