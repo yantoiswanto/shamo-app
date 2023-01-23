@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_app/theme.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   Widget header() {
     return AppBar(
       backgroundColor: backgroundColor1,
@@ -45,9 +50,15 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Image.asset(
-                'assets/button_exit.png',
-                width: 20,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/sign-in', (route) => false);
+                },
+                child: Image.asset(
+                  'assets/button_exit.png',
+                  width: 20,
+                ),
               ),
             ],
           ),
@@ -102,7 +113,14 @@ class ProfilePage extends StatelessWidget {
                 fontWeight: semiBold,
               ),
             ),
-            menuItem('Edit Profile'),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/edit-profile');
+              },
+              child: menuItem(
+                'Edit Profile',
+              ),
+            ),
             menuItem('Your Orders'),
             menuItem('Help'),
             SizedBox(
